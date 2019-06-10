@@ -20,7 +20,6 @@ namespace CoreCodeCamp.Controllers
         private readonly IMapper _mapper;
         private readonly LinkGenerator _linkGenerator;
 
-        // where do repository and mapper come from in the constructor here?
         public Camps2Controller(ICampRepository repository, IMapper mapper, LinkGenerator linkGenerator)
         {
             _repository = repository;
