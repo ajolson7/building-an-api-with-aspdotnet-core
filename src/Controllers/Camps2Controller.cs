@@ -28,9 +28,6 @@ namespace CoreCodeCamp.Controllers
             _linkGenerator = linkGenerator;
         }
 
-        // how is _mapper.Map connected to the line "services.AddAutoMapper();" in the "Startup.cs" file
-            // and the CampProfile.cs file that creates the mapping with the line
-            // "this.CreateMap<Camp, CampModel>();"?
         // the variable "includeTalks" is a query string
         [HttpGet]
         public async Task<IActionResult> Get(bool includeTalks = false)
@@ -115,7 +112,6 @@ namespace CoreCodeCamp.Controllers
                     // an object of any route values for the route (required parameters for the route,
                     // e.g. includeTalks)
                 
-                // can link generator provide/generate a link with a query string in it?
                 var location = _linkGenerator.GetPathByAction("Get",
                     "Camps",
                     new { moniker = model.Moniker }
