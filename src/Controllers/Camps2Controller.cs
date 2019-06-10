@@ -20,7 +20,6 @@ namespace CoreCodeCamp.Controllers
         private readonly IMapper _mapper;
         private readonly LinkGenerator _linkGenerator;
 
-        // where do repository and mapper come from in the constructor here?
         public Camps2Controller(ICampRepository repository, IMapper mapper, LinkGenerator linkGenerator)
         {
             _repository = repository;
@@ -28,9 +27,6 @@ namespace CoreCodeCamp.Controllers
             _linkGenerator = linkGenerator;
         }
 
-        // how is _mapper.Map connected to the line "services.AddAutoMapper();" in the "Startup.cs" file
-            // and the CampProfile.cs file that creates the mapping with the line
-            // "this.CreateMap<Camp, CampModel>();"?
         // the variable "includeTalks" is a query string
         [HttpGet]
         public async Task<IActionResult> Get(bool includeTalks = false)
@@ -53,11 +49,11 @@ namespace CoreCodeCamp.Controllers
         }
 
         // {moniker} is bound to the string moniker in the Get (Get(string moniker))
-            // the variable moniker in {moniker} and Get(string moniker) must be the same; you can't
-            // do {moniker} and Get(string blah) for example
+        // the variable moniker in {moniker} and Get(string moniker) must be the same; you can't
+        // do {moniker} and Get(string blah) for example
         // if Get(string moniker) was instead Get(int moniker), do this: [HttpGet("{moniker:int}")]
         // given the url "http://localhost:6600/api/camps/ATL2018", the "ATL2018" part is what is
-            // bound to the variable "moniker"; the variable "moniker" is a query string
+        // bound to the variable "moniker"; the variable "moniker" is a query string
         [HttpGet("{moniker}")]
         public async Task<ActionResult<CampModel>> Get(string moniker)
         {
@@ -107,15 +103,14 @@ namespace CoreCodeCamp.Controllers
                 }
 
                 // the link generator is just providing/generating a URL for a given Get request; this
-                    // is important because when you do an http post/when you create something on
-                    // your database, it will be a single item/model in your database which you need
-                    // to be able to reach through a Get request endpoint in your API
+                // is important because when you do an http post/when you create something on
+                // your database, it will be a single item/model in your database which you need
+                // to be able to reach through a Get request endpoint in your API
                 // the link generator "GetPathByAction" function requires the name of the route you
-                    // want to generate a link or URL for, the controller that route belongs to, and
-                    // an object of any route values for the route (required parameters for the route,
-                    // e.g. includeTalks)
-                
-                // can link generator provide/generate a link with a query string in it?
+                // want to generate a link or URL for, the controller that route belongs to, and
+                // an object of any route values for the route (required parameters for the route,
+                // e.g. includeTalks)
+
                 var location = _linkGenerator.GetPathByAction("Get",
                     "Camps",
                     new { moniker = model.Moniker }

@@ -26,7 +26,10 @@ namespace CoreCodeCamp.Controllers
         private readonly IMapper _mapper;
         private readonly LinkGenerator _linkGenerator;
 
+<<<<<<< HEAD
         // where do repository and mapper come from in the constructor here?
+=======
+>>>>>>> 27b231154229b69291742f4fedf8cc5dfb4ba85e
         public CampsController(ICampRepository repository, IMapper mapper, LinkGenerator linkGenerator)
         {
             _repository = repository;
@@ -34,9 +37,12 @@ namespace CoreCodeCamp.Controllers
             _linkGenerator = linkGenerator;
         }
 
+<<<<<<< HEAD
         // how is _mapper.Map connected to the line "services.AddAutoMapper();" in the "Startup.cs" file
             // and the CampProfile.cs file that creates the mapping with the line
             // "this.CreateMap<Camp, CampModel>();"?
+=======
+>>>>>>> 27b231154229b69291742f4fedf8cc5dfb4ba85e
         // the variable "includeTalks" is a query string
         [HttpGet]
         public async Task<ActionResult<CampModel[]>> Get(bool includeTalks = false)
@@ -135,7 +141,10 @@ namespace CoreCodeCamp.Controllers
                     // an object of any route values for the route (required parameters for the route,
                     // e.g. includeTalks)
                 
+<<<<<<< HEAD
                 // can link generator provide/generate a link with a query string in it?
+=======
+>>>>>>> 27b231154229b69291742f4fedf8cc5dfb4ba85e
                 var location = _linkGenerator.GetPathByAction("Get",
                     "Camps",
                     new { moniker = model.Moniker }
@@ -215,4 +224,8 @@ namespace CoreCodeCamp.Controllers
             return BadRequest("Failed to delete the camp");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 27b231154229b69291742f4fedf8cc5dfb4ba85e
